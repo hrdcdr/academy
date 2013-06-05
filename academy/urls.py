@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     url(r'^description/(?P<did>\d+)/card/(?P<cid>\d+)/$', 'taxation.views.card_view', name='card_view'),
     url(r'^description/(?P<did>\d+)/card/(?P<cid>\d+)/edit/$', 'taxation.views.card_edit', name='card_edit'),
     url(r'^description/(?P<did>\d+)/delete/$', 'taxation.views.description_delete', name='description_delete'),
+    url(r'^description/(?P<did>\d+)/card/(?P<cid>\d+)/delete/$', 'taxation.views.card_delete', name='card_delete'),
     # url(r'^$', 'academy.views.home', name='home'),
     # url(r'^academy/', include('academy.foo.urls')),
 
