@@ -54,17 +54,20 @@ class Card(models.Model):
     point = models.CharField(max_length=50, verbose_name=u'Пункт таксации')
     distance = models.CharField(max_length=50, verbose_name=u'Расстояние')
 
+    def fields(self):
+        fields = self._meta.fields
+        for field in fields:
+            field.value = getattr(self, field.name)
+        return fields[2:]
+
     def get_absolute_url(self):
         return "/description/%d/card/%d/" % (self.description.id, self.id)
 
     def edit_url(self):
         return "/description/%d/card/%d/edit" % (self.description.id, self.id)
 
-    def fields(self):
-        fields = self._meta.fields
-        for field in fields:
-            field.value = getattr(self, field.name)
-        return fields[2:]
+    def delete_url(self):
+        return "/description/%d/card/%d/delete" % (self.description.id, self.id)
 
 
 class Table1(models.Model):

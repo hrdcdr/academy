@@ -222,3 +222,10 @@ def description_delete(request, did):
     description = Description.objects.get(pk=did)
     description.delete()
     return HttpResponseRedirect('/')
+
+
+@login_required
+def card_delete(request, cid):
+    card = Card.objects.get(pk=cid)
+    card.delete()
+    return HttpResponseRedirect('/')
