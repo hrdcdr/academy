@@ -9,6 +9,7 @@ $(document).ready(function(){
     $('#append').click(function() {
         var field_text = $('select#field option:selected').text()
         var condition_text = $('select#condition option:selected').text();
-        $('#listfilters').fadeIn('slow').append('<li>' + field_text + ' ' + condition_text + '</li>');
+        var filter_text = $('input[name="selected"]').val();
+        $('#listfilters').fadeIn('slow').append('<li>' + field_text + ' ' + condition_text + ' ' + filter_text +'</li>');
 	});
 });

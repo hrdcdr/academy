@@ -44,7 +44,7 @@ class Description(models.Model):
         return "/description/%d/edit/" % self.id
 
     def delete_url(self):
-        return
+        return "/description/%d/delete" % self.id
 
 
 class Card(models.Model):

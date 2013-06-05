@@ -36,6 +36,7 @@ def description_view(request, did):
         'description': description,
         'cards': cards,
     }
+    content.update(csrf(request))
     return render(request, 'description_view.html', content)
 
 
@@ -70,7 +71,7 @@ def description_add(request):
         descriptionform = DescriptionForm(request.POST)
         if descriptionform.is_valid():
             description = descriptionform.save()
-            return HttpResponseRedirect('/descriptions/' + str(description.id) + '/cards/')
+            return HttpResponseRedirect(description.get_absolute_url())
     else:
         descriptionform = DescriptionForm()
     content = {
@@ -87,7 +88,7 @@ def description_edit(request, did):
         descriptionform = DescriptionForm(request.POST, instance=description)
         if descriptionform.is_valid():
             description = descriptionform.save()
-            return HttpResponseRedirect('/descriptions/' + str(description.id) + '/cards/')
+            return HttpResponseRedirect(description.get_absolute_url())
     else:
         descriptionform = DescriptionForm(instance=description)
     content = {
@@ -214,3 +215,10 @@ def card_edit(request, did, cid):
     }
     content.update(csrf(request))
     return render(request, 'card_edit.html', content)
+
+
+@login_required
+def description_delete(request, did):
+    description = Description.objects.get(pk=did)
+    description.delete()
+    return HttpResponseRedirect('/')
