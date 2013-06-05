@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Таксационное описание{% endblock %}
+{% block content_title %}
+    <h2>Таксационное описание:</h2>
+{% endblock %}
+{% block content %}
+    <div class="datagrid-vertical">
+            <table class="table table-bordered">
+                <tbody>
+                    {% for field in description.fields %}
+                         <tr>
+                             <th>{{ field.verbose_name }}</th>
+                             <td>{{ field.value }}</td>
+                         </tr>
+                    {% endfor %}
+                <tbody>
+            </table>
+        </div>
+    <div class="btn-group">
+        <a class="btn btn-inverse" href="{{ description.edit_url }}">Редактировать</a>
+        <button class="btn btn-danger" name="delete">Удалить</button>
+    </div>
+    <br>
+    <br>
+    <h2>Список карт таксации:</h2>
+    {% for card in cards %}
+         <div class="datagrid-vertical">
+                <table class="table table-bordered">
+                <tbody>
+                    {% for field in card.fields %}
+                         <tr>
+                             <th>{{ field.verbose_name }}</th>
+                             <td>{{ field.value }}</td>
+                         </tr>
+                    {% endfor %}
+                <tbody>
+                </table>
+        </div>
+    <div class="btn-group">
+        <a class="btn" href="{{ card.get_absolute_url }}">Просмотр</a>
+    </div>
+    <br>
+    <br>
+    {% endfor %}
+    <br>
+    <br>
+    <a class="btn btn-primary" href="{{ description.add_card_url }}">Добавить карту таксации</a>
+{% endblock %}

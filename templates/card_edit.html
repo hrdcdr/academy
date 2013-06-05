@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block title %}Карта таксации{% endblock %}
+{% block content_title %}
+    <h2>Карта таксации</h2>
+{% endblock %}
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+    <div class="datagrid-vertical">
+        <table class="table table-bordered">
+            <tbody>
+            {% for field in cardform %}
+                <tr>
+                    <th>{{ field.label }}</th>
+                    <td>{{ field.errors.as_ul }} {{ field }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        <br>
+    <div class="datagrid">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                {% for field in table1form %}
+                    <th>{{ field.label }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for field in table1form %}
+                    <td>{{ field.errors.as_ul }} {{ field }}</td>
+                {% endfor %}
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <br>
+    <div class="datagrid">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                {% for field in table2form %}
+                    <th>{{ field.label }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for field in table2form %}
+                    <td>{{ field.errors.as_ul }} {{ field }}</td>
+                {% endfor %}
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <br>
+    <div class="datagrid">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                {% for field in table3form %}
+                    <th>{{ field.label }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for field in table3form %}
+                    <td>{{ field.errors.as_ul }} {{ field }}</td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <br>
+    <div class="datagrid">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                {% for field in table4form %}
+                    <th>{{ field.label }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for field in table4form %}
+                    <td>{{ field.errors.as_ul }} {{ field }}</td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <br>
+    <div class="datagrid">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                {% for field in table31form %}
+                    <th>{{ field.label }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for field in table31form %}
+                    <td>{{ field.errors.as_ul }} {{ field }}</td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <br>
+    <div class="datagrid">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                {% for field in table32form %}
+                    <th>{{ field.label }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for field in table32form %}
+                    <td>{{ field.errors.as_ul }} {{ field }}</td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <br>
+        {{ stageformset.management_form }}
+    <div class="datagrid">
+        <table class="table table-bordered">
+            {% for form in stageformset.forms %}
+                {% if forloop.first %}
+                    <thead>
+                        <tr>
+                            {% for field in form.visible_fields %}
+                                <th>{{ field.label }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                {% endif %}
+                <tr>
+                    {{ form.id }}
+                    {% for field in form.visible_fields %}
+                        <td>{{ field.errors.as_ul }} {{ field }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+    <input type="submit" class="btn btn-success" value="Сохранить" />
+    </form>
+{% endblock %}

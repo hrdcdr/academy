@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% block title %}Карта таксации{% endblock %}
+{% block content_title %}
+    <h2>Карта таксации</h2>
+{% endblock %}
+{% block content %}
+    <div class="datagrid-vertical">
+                <table class="table table-bordered">
+                <tbody>
+                    {% for field in card.fields %}
+                         <tr>
+                             <th>{{ field.verbose_name }}</th>
+                             <td>{{ field.value }}</td>
+                         </tr>
+                    {% endfor %}
+                <tbody>
+            </table>
+    </div>
+    <br>
+    <div class="datagrid">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for field in table1.fields %}
+                        <th>{{ field.verbose_name }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for field in table1.fields %}
+                        <td>{{ field.value }}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <br>
+    <div class="datagrid">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for field in table2.fields %}
+                        <th>{{ field.verbose_name }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for field in table2.fields %}
+                        <td>{{ field.value }}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <br>
+    <div class="datagrid">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for field in table3.fields %}
+                        <th>{{ field.verbose_name }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for field in table3.fields %}
+                        <td>{{ field.value }}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <br>
+    <div class="datagrid">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for field in table4.fields %}
+                        <th>{{ field.verbose_name }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for field in table4.fields %}
+                        <td>{{ field.value }}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <br>
+    <div class="datagrid">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for field in table31.fields %}
+                        <th>{{ field.verbose_name }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for field in table31.fields %}
+                        <td>{{ field.value }}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <br>
+        <div class="datagrid">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for field in table32.fields %}
+                        <th>{{ field.verbose_name }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for field in table32.fields %}
+                        <td>{{ field.value }}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <br>
+    <div class="datagrid">
+        <table class="table table-bordered">
+            {% for stage in stages %}
+                {% if forloop.first %}
+                    <thead>
+                        <tr>
+                            {% for field in stage.fields %}
+                                <th>{{ field.verbose_name }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                {% endif %}
+                <tr>
+                    {% for field in stage.fields %}
+                        <td>{{ field.value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+    <div class="btn-group">
+        <a class="btn btn-inverse" href="{{ card.edit_url }}">Редактировать</a>
+        <button class="btn btn-danger" name="delete">Удалить</button>
+    </div>
+{% endblock %}

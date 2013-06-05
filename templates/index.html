@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load bootstrap_pagination %}
+{% block title %}Список таксационных описаний{% endblock %}
+{% block content_title %}
+    <h2>Список таксационных описаний:</h2>
+{% endblock %}
+{% block content %}
+    <br>
+    <div class="text-center">
+        <p>
+            <a class="btn btn-primary btn-large" href="/description/add/">Добавить таксационное описание</a>
+        </p>
+    </div>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="input-append">
+            <select id="field" name="field" class="span3">
+                <option value="">-Поле-</option>
+                {% for field in Description.fields %}
+                    <option value="{{ field.name }}">{{ field.verbose_name }}</option>
+                {% endfor %}
+            </select>
+            <select id="condition" name="condition" class="span3">
+                <option value="">-Условие-</option>
+                {% for field in Description.fields %}
+                    {% if field.type == "<class 'django.db.models.fields.PositiveSmallIntegerField'>" %}
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}">=</option>
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}">!=</option>
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}"><</option>
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}">></option>
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}"><=</option>
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}">>=</option>
+                    {% endif %}
+                    {% if field.type == "<class 'django.db.models.fields.CharField'>" %}
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}">Совпадает</option>
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}">Содержит</option>
+                    {% endif %}
+                    {% if field.type == "<class 'django.db.models.fields.DateField'>" %}
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}">=</option>
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}">!=</option>
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}"><</option>
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}">></option>
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}"><=</option>
+                        <option value="{{ forloop.counter }}" class="{{ field.name }}">>=</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <script type="text/javascript">
+                $(function() {
+                    $("#condition").chained("#field");
+                });
+            </script>
+            <input type="text" name="selected" class="span3" />
+            <button id="append" class="btn" type="button"><i class="icon-plus"></i></button>
+        </div>
+        <ul id="listfilters">
+        </ul>
+        <div>
+            <input type="submit" class="btn btn-success" value="Применить фильтр" />
+        </div>
+    </form>
+    <br>
+    {% for description in descriptions %}
+        <div class="datagrid-vertical">
+            <table class="table table-bordered">
+                <tbody>
+                    {% for field in description.fields %}
+                         <tr>
+                             <th>{{ field.verbose_name }}</th>
+                             <td>{{ field.value }}</td>
+                         </tr>
+                    {% endfor %}
+                <tbody>
+            </table>
+        </div>
+        <div class="btn-group">
+            <a class="btn" href="{{ description.get_absolute_url }}">Просмотр</a>
+        </div>
+        <br>
+        <br>
+        <br>
+    {% endfor %}
+    {% bootstrap_paginate descriptions range=5 %}
+{% endblock %}

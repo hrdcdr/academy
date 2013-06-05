@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Таксационное описание{% endblock %}
+{% block content_title %}
+    <h2>Таксационное описание</h2>
+{% endblock %}
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+    <div class="datagrid-vertical">
+        <table class="table table-bordered">
+            {% for field in descriptionform %}
+                <tr>
+                    <th>{{ field.label }}</th>
+                    <td>{{ field.errors.as_ul }} {{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+    <input type="submit" class="btn btn-success" value="Сохранить" />
+    </form>
+{% endblock %}

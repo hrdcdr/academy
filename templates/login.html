@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="span offset4">
+            <div class="well">
+                <legend>Вход</legend>
+                <form class="form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <div class="alert alert-error">
+                            <a class="close" data-dismiss="alert" href="#">x</a>Неверное имя пользователя или пароль
+                        </div>
+                    {% endif %}
+
+                    <div class="control-group">
+                        <!-- Username -->
+                        <label class="control-label" for="username">{{ form.username.label }}</label>
+                            <div class="controls">
+                                {{ form.username }}
+                            </div>
+                     </div>
+
+                    <div class="control-group">
+                        <!-- Password-->
+                        <label class="control-label" for="password">{{ form.password.label }}</label>
+                        <div class="controls">
+                            {{ form.password }}
+                        </div>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Войти" />
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

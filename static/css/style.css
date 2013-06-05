@@ -1,0 +1,80 @@
+/*html {
+    background:url("../img/bg.png") repeat;
+}*/
+
+body {
+    /*min-width:1000px;*/
+    max-width:1280px;
+    margin: auto;
+}
+
+/*.datagrid table {
+	border-collapse: collapse;
+	text-align: center;
+	width: 100%;
+}
+
+.datagrid {
+	font-size: 12px;
+	background: #fff; overflow: hidden; border: 1px solid #252525;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+    width: 99.9%;
+}
+
+.datagrid table td, .datagrid table th {
+	padding: 5px 10px;
+}
+
+.datagrid table thead th {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #252525), color-stop(1, #111111) );
+	background:-moz-linear-gradient( center top, #252525 5%, #111111 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#252525', endColorstr='#111111');
+	background-color: #252525;
+    color:#FFFFFF;
+	font-weight: bold;
+	border-left: 1px solid #111111;
+}
+
+.datagrid table thead th:first-child {
+	border: none;
+}
+
+.datagrid table tbody td {
+	color: #111111;
+	border-left: 1px solid #E1EEF4;
+	font-size: 12px;
+	font-weight: normal;
+    width: 60px;
+}
+
+.datagrid table tbody td input {
+    width: 100%;
+    background: #FEFEFE;
+    border-radius:3px;
+    border:1px solid #C9C9C9;
+    padding-left:3px;
+}
+
+
+.datagrid table tbody .alt td {
+	background: #E1EEf4;
+	color: #111111;
+}
+
+.datagrid table tbody td:first-child {
+	border-left: none;
+}
+
+.datagrid table tbody tr:last-child td {
+	border-bottom: none;
+}*/
+
+.breadcrumb {
+    background-color: #ffffff;
+}
+
+.datagrid-vertical {
+    max-width: 500px;
+}
