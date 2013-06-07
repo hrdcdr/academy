@@ -12,8 +12,7 @@
         </p>
     </div>
     <br>
-    <form action="" method="post">
-        {% csrf_token %}
+
         <div class="input-append">
             <select id="field" name="field" class="span3">
                 <option value="">-Поле-</option>
@@ -25,24 +24,18 @@
                 <option value="">-Условие-</option>
                 {% for field in Description.fields %}
                     {% if field.type == "<class 'django.db.models.fields.PositiveSmallIntegerField'>" %}
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}">=</option>
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}">!=</option>
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}"><</option>
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}">></option>
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}"><=</option>
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}">>=</option>
+                        <option value="__exact" class="{{ field.name }}">=</option>
+                        <option value="__lt" class="{{ field.name }}"><</option>
+                        <option value="__gt" class="{{ field.name }}">></option>
                     {% endif %}
                     {% if field.type == "<class 'django.db.models.fields.CharField'>" %}
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}">Совпадает</option>
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}">Содержит</option>
+                        <option value="__exact" class="{{ field.name }}">Совпадает</option>
+                        <option value="__icontains" class="{{ field.name }}">Содержит</option>
                     {% endif %}
                     {% if field.type == "<class 'django.db.models.fields.DateField'>" %}
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}">=</option>
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}">!=</option>
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}"><</option>
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}">></option>
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}"><=</option>
-                        <option value="{{ forloop.counter }}" class="{{ field.name }}">>=</option>
+                        <option value="__gte" class="{{ field.name }}">C</option>
+                        <option value="__lte" class="{{ field.name }}">До</option>
+                        <option value="__exact" class="{{ field.name }}">Точное совпадение</option>
                     {% endif %}
                 {% endfor %}
             </select>
@@ -54,6 +47,11 @@
             <input type="text" id="selected" name="selected" class="span3" />
             <button id="append" class="btn" type="button"><i class="icon-plus"></i></button>
         </div>
+        <div id="results">
+
+        </div>
+    <form action="" method="post">
+        {% csrf_token %}
         <ul id="listfilters">
         </ul>
         <div>

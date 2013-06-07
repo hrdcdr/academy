@@ -8,8 +8,14 @@
 $(document).ready(function(){
     $('#append').click(function() {
         var field_text = $('select#field option:selected').text()
+        var field = $('select#field option:selected').val()
         var condition_text = $('select#condition option:selected').text();
-        var filter_text = $('input[name="selected"]').val();
-        $('#listfilters').fadeIn('slow').append('<li>' + '"' +field_text + '"' + ' ' + condition_text + ' ' + '"' + filter_text + '"' + '</li>');
+        var condition = $('select#condition option:selected').val();
+        var filter = $('input[name="selected"]').val();
+        $('#listfilters').fadeIn('slow').append(
+            '<li>' + '"' +field_text + '"' + ' ' + condition_text + ' ' + '"' + filter + '"' + '</li>' +
+                '<input type="hidden" value="' + field + condition + '" name="condition">' +
+                '<input type="hidden" value="' + filter + '" name="filter">'
+        );
 	});
 });

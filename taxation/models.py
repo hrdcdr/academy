@@ -27,6 +27,9 @@ class Description(models.Model):
     responsible = models.CharField(max_length=50, verbose_name=u'Ответственный')
     date = models.DateField(verbose_name=u'Дата заполнения')
 
+    class Meta:
+        ordering = ['-id']
+
     def fields(self):
         fields = self._meta.fields
         for field in fields:
@@ -53,6 +56,9 @@ class Card(models.Model):
     way = models.CharField(max_length=50, verbose_name=u'Ход')
     point = models.CharField(max_length=50, verbose_name=u'Пункт таксации')
     distance = models.CharField(max_length=50, verbose_name=u'Расстояние')
+
+    class Meta:
+        ordering = ['-id']
 
     def fields(self):
         fields = self._meta.fields

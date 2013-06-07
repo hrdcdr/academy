@@ -4,15 +4,29 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from models import Description, Card, Stage, Table1, Table2, Table3, Table4, Table31, Table32
 from forms import DescriptionForm, CardForm, StageForm, Table1Form, Table2Form, Table3Form, Table4Form, Table31Form, Table32Form
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response, RequestContext
 from django.forms.models import inlineformset_factory
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.context_processors import csrf
+from datetime import datetime, date
+from django.db.models import Q
 
 
 @login_required
 def index(request):
-    descriptions_list = Description.objects.order_by('-id')
+    i = 0
+    kwargs = {}
+    cs = request.POST.getlist('condition')
+    fs = request.POST.getlist('filter')
+    for c in cs:
+        if c == 'date__exact' or c == 'date__lte' or c == 'date__gte':
+            kwargs[c] = datetime.strptime(fs[i], '%d.%m.%Y')
+        else:
+            datetime.s
+            kwargs[c] = fs[i]
+            i += 1
+        print kwargs[c]
+    descriptions_list = Description.objects.filter(**kwargs)
     paginator = Paginator(descriptions_list, 5)
     page = request.GET.get('page')
     try:
