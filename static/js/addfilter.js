@@ -10,6 +10,6 @@ $(document).ready(function(){
         var field_text = $('select#field option:selected').text()
         var condition_text = $('select#condition option:selected').text();
         var filter_text = $('input[name="selected"]').val();
-        $('#listfilters').fadeIn('slow').append('<li>' + field_text + ' ' + condition_text + ' ' + filter_text +'</li>');
+        $('#listfilters').fadeIn('slow').append('<li>' + '"' +field_text + '"' + ' ' + condition_text + ' ' + '"' + filter_text + '"' + '</li>');
 	});
 });
