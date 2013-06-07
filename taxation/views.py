@@ -12,7 +12,7 @@ from django.core.context_processors import csrf
 
 @login_required
 def index(request):
-    descriptions_list = Description.objects.all()
+    descriptions_list = Description.objects.order_by('-id')
     paginator = Paginator(descriptions_list, 5)
     page = request.GET.get('page')
     try:
