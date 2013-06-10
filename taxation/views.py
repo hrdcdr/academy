@@ -22,7 +22,6 @@ def index(request):
         else:
             kwargs[c] = fs[i]
             i += 1
-        print kwargs[c]
     descriptions_list = Description.objects.filter(**kwargs)
     paginator = Paginator(descriptions_list, 5)
     page = request.GET.get('page')
