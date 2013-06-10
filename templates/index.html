@@ -12,7 +12,6 @@
         </p>
     </div>
     <br>
-
         <div class="input-append">
             <select id="field" name="field" class="span3">
                 <option value="">-Поле-</option>
@@ -48,12 +47,14 @@
             <button id="append" class="btn" type="button"><i class="icon-plus"></i></button>
         </div>
         <div id="results">
-
         </div>
     <form action="" method="post">
         {% csrf_token %}
         <ul id="listfilters">
         </ul>
+        <script type="text/javascript">
+            $('input.date').datepicker()
+        </script>
         <div>
             <input type="submit" class="btn btn-success" value="Применить фильтр" />
         </div>

@@ -13,9 +13,9 @@ $(document).ready(function(){
         var condition = $('select#condition option:selected').val();
         var filter = $('input[name="selected"]').val();
         $('#listfilters').fadeIn('slow').append(
-            '<li>' + '"' +field_text + '"' + ' ' + condition_text + ' ' + '"' + filter + '"' + '</li>' +
+            '<li>' + '"' +field_text + '"' + ' ' + condition_text + ' ' + '"' + filter + '"' +
                 '<input type="hidden" value="' + field + condition + '" name="condition">' +
-                '<input type="hidden" value="' + filter + '" name="filter">'
+                '<input type="hidden" value="' + filter + '" name="filter">'  + '</li>'
         );
 	});
 });

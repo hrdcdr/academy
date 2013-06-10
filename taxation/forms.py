@@ -1,5 +1,5 @@
 from models import Description, Card, Stage, Table1, Table2, Table3, Table4, Table31, Table32
-from django.forms import ModelForm, forms
+from django.forms import ModelForm
 
 
 class DescriptionForm(ModelForm):
